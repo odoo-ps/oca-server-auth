@@ -15,6 +15,7 @@ from jose.utils import long_to_base64
 import odoo
 from odoo.exceptions import AccessDenied
 from odoo.tests import common
+from odoo.tools.misc import mute_logger
 
 from odoo.addons.website.tools import MockRequest as _MockRequest
 
@@ -251,7 +252,10 @@ class TestAuthOIDCAuthorizationCodeFlow(common.HttpCase):
         )
 
         with self.assertRaises(AccessDenied):
-            with MockRequest(self.env):
+            with (
+                MockRequest(self.env),
+                mute_logger("odoo.addons.auth_oidc.models.res_users"),
+            ):
                 self.env["res.users"].auth_oauth(
                     self.provider_rec.id,
                     {"state": json.dumps({})},

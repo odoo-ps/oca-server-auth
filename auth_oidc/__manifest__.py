@@ -9,7 +9,8 @@
     "author": (
         "ICTSTUDIO, André Schenkels, "
         "ACSONE SA/NV, "
-        "Odoo Community Association (OCA)"
+        "Odoo Community Association (OCA), "
+        "Odoo PS"
     ),
     "maintainers": ["sbidoul"],
     "website": "https://github.com/OCA/server-auth",
